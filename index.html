@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, CAPTAIN! 🏴‍☠️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --gold: #ffd166;
+  --red: #e63946;
+  --navy: #071629;
+  --cream: #fff4dc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  color: white;
+  background: radial-gradient(ellipse at top, #1788ad, transparent 55%),
+              linear-gradient(180deg, #075985, #071629 90%);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 35px 35px;
+}
+
+header { padding: 20px 16px; position: relative; z-index: 2; }
+
+.brand {
+  color: var(--gold);
+  font-family: 'Bangers', cursive;
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin: 14px auto;
+}
+
+.progress span {
+  height: 6px;
+  width: 42px;
+  border-radius: 9px;
+  background: #ffffff35;
+}
+
+.progress span.done { background: var(--gold); }
+
+.screen {
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: min(940px, 94%);
+  margin: 20px auto 55px;
+  padding: clamp(20px, 5vw, 45px);
+  background: rgba(7, 22, 41, .92);
+  border: 2px solid #ffd166a8;
+  border-radius: 26px;
+  box-shadow: 0 20px 70px #0005;
+  animation: appear .5s ease;
+}
+
+.screen.active { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  color: var(--gold);
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  text-shadow: 3px 4px 0 #a52831;
+  line-height: 1.12;
+  margin: 12px 0 18px;
+}
+
+h2 { color: var(--gold); font-size: 2.1rem; margin-bottom: 12px; }
+h3 { font-size: 1.5rem; color: var(--gold); }
+
+p {
+  line-height: 1.8;
+  color: #e6edf7;
+  margin: 0 auto 20px;
+  max-width: 680px;
+}
+
+.hero {
+  font-size: clamp(5rem, 15vw, 9rem);
+  margin: 12px 0;
+  animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.btn {
+  display: inline-block;
+  margin: 8px 4px;
+  padding: 13px 25px;
+  background: var(--red);
+  border: 2px solid var(--gold);
+  border-radius: 50px;
+  color: white;
+  font-family: 'Bangers', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #8f1725;
+  transition: .2s;
+}
+
+.btn:hover { transform: translateY(-3px); background: #ff5260; }
+
+.btn:focus-visible, .ship:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.tag {
+  display: inline-block;
+  color: var(--gold);
+  border: 1px solid #ffd16677;
+  border-radius: 30px;
+  padding: 6px 14px;
+  font-size: .8rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.divider {
+  width: 90px;
+  height: 4px;
+  background: var(--red);
+  border-radius: 5px;
+  margin: 18px auto 25px;
+}
+
+/* Straw Hat crew */
+.crew-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 13px;
+  margin: 25px 0;
+}
+
+.character {
+  background: linear-gradient(145deg, #173957, #0a1a2c);
+  border: 1px solid #ffffff20;
+  border-radius: 16px;
+  padding: 16px 8px;
+  transition: .25s;
+}
+
+.character:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f9d58a, #c87e3d);
+  font-size: 2.7rem;
+}
+
+.character p { font-size: .78rem; margin: 5px 0 0; }
+.character h3 { font-size: 1.25rem; }
+
+/* Ship battle */
+.ship-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 590px;
+  margin: 28px auto;
+}
+
+.ship {
+  min-width: 0;
+  aspect-ratio: 1;
+  border: 2px solid var(--gold);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #176b91, #102840);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.ship:hover { transform: scale(1.07); }
+
+.ship.sunk {
+  opacity: 0;
+  transform: scale(.1) rotate(30deg);
+  pointer-events: none;
+}
+
+.bounty {
+  color: var(--gold);
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  margin: 12px 0;
+}
+
+/* Birthday letter */
+.letter {
+  background: var(--cream);
+  color: #422817;
+  padding: clamp(20px, 5vw, 35px);
+  border-radius: 7px;
+  border: 7px double #9d682b;
+  text-align: left;
+  margin: 22px 0;
+  box-shadow: 0 12px 25px #0004;
+  max-height: 65vh;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  scrollbar-color: #9d682b #fff4dc;
+}
+
+.letter h2 {
+  color: #9e2b26;
+  line-height: 1.3;
+}
+
+.letter p {
+  color: #422817;
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+
+.signature { text-align: right; font-weight: 700; }
+
+/* Devil Fruit */
+.fruit-area { padding: 25px 0; }
+
+.fruit {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 43% 48% 45% 48%;
+  margin: 20px auto 28px;
+  background: radial-gradient(circle at 30% 25%, #ed8aff, #9024bc 55%, #41106c);
+  border: 5px solid #f6c6ff;
+  box-shadow: inset -18px -18px 25px #21063788, 0 0 40px #c46aff50;
+  animation: fruitFloat 2.8s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.fruit::before, .fruit::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 5px solid #4b116b;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  transform: rotate(35deg);
+}
+
+.fruit::before { left: 30px; top: 48px; }
+.fruit::after { right: 28px; bottom: 38px; }
+
+.fruit .swirl {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 5px solid #4b116b;
+  border-radius: 50%;
+  border-top-color: transparent;
+  transform: rotate(30deg);
+  top: 90px;
+  left: 80px;
+}
+
+.stem {
+  width: 14px;
+  height: 35px;
+  background: #53aa49;
+  border-radius: 90% 0;
+  margin: 0 auto -18px;
+  transform: rotate(20deg);
+}
+
+@keyframes fruitFloat {
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+.candle {
+  display: none;
+  font-size: 3rem;
+  animation: bob .7s infinite alternate;
+}
+
+.candle.show { display: block; }
+
+.final-message {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  color: var(--gold);
+  text-shadow: 3px 4px #bd2636;
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 99;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(700deg); opacity: .1; }
+}
+
+footer {
+  padding: 15px;
+  color: #ffffff80;
+  font-size: .75rem;
+}
+
+[hidden] { display: none !important; }
+
+@media (max-width: 480px) {
+  .screen { padding: 23px 16px; }
+  .ship-grid { gap: 7px; }
+  .crew-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .btn { padding: 12px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">☠ THE STRAW HAT CREW ☠</div>
+  <div class="progress" id="progress">
+    <span class="done"></span><span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- SCREEN 1: WELCOME -->
+<section class="screen active" id="screen1">
+  <div class="tag">A SPECIAL TRANSMISSION</div>
+  <div class="hero">🏴‍☠️</div>
+  <h1>Oi, CAPTAIN!</h1>
+  <div class="divider"></div>
+  <p>
+    A message has arrived through the Den Den Mushi! 📞
+    The Straw Hat crew has gathered from across the Grand Line
+    to celebrate the birthday of one very special person.
+  </p>
+  <p>Are you ready to set sail for the greatest birthday treasure?</p>
+  <button class="btn" onclick="showScreen(2)">Raise the Sails! 🌊</button>
+</section>
+
+<!-- SCREEN 2: CREW -->
+<section class="screen" id="screen2">
+  <div class="tag">YOUR ALLIES ON THIS VOYAGE</div>
+  <h1>The Straw Hat Crew!</h1>
+  <p>Every legendary adventure needs a legendary crew. Meet the pirates who came to celebrate you!</p>
+
+  <div class="crew-grid">
+    <div class="character"><div class="avatar">👒</div><h3>Luffy</h3><p>Captain • Future Pirate King</p></div>
+    <div class="character"><div class="avatar">⚔️</div><h3>Zoro</h3><p>Swordsman • Three-Sword Style</p></div>
+    <div class="character"><div class="avatar">🍊</div><h3>Nami</h3><p>Navigator • Weather Expert</p></div>
+    <div class="character"><div class="avatar">🎯</div><h3>Usopp</h3><p>Sniper • Brave Warrior</p></div>
+    <div class="character"><div class="avatar">🦵</div><h3>Sanji</h3><p>Cook • Black Leg</p></div>
+    <div class="character"><div class="avatar">🦌</div><h3>Chopper</h3><p>Doctor • Cotton Candy Lover</p></div>
+    <div class="character"><div class="avatar">📚</div><h3>Robin</h3><p>Archaeologist • Flower-Flower Fruit</p></div>
+    <div class="character"><div class="avatar">🤖</div><h3>Franky</h3><p>Shipwright • SUPER!</p></div>
+    <div class="character"><div class="avatar">🎻</div><h3>Brook</h3><p>Musician • Soul King</p></div>
+    <div class="character"><div class="avatar">🦈</div><h3>Jinbe</h3><p>Helmsman • Knight of the Sea</p></div>
+  </div>
+
+  <p>But wait! The Marines have hidden your birthday treasure. We need your help!</p>
+  <button class="btn" onclick="showScreen(3)">To Battle! ⚔️</button>
+</section>
+
+<!-- SCREEN 3: SHIP BATTLE AND LETTER -->
+<section class="screen" id="screen3">
+  <div class="tag">GRAND LINE CHALLENGE</div>
+  <h1>Sink the Rival Ships!</h1>
+  <p id="battleHint">Tap all five ships to defeat the enemy fleet and unlock your secret birthday letter!</p>
+  <div class="bounty" id="bounty">Ships defeated: 0 / 5</div>
+
+  <div class="ship-grid" id="shipGrid">
+    <button class="ship" aria-label="Sink ship 1">⛵</button>
+    <button class="ship" aria-label="Sink ship 2">🚢</button>
+    <button class="ship" aria-label="Sink ship 3">⛵</button>
+    <button class="ship" aria-label="Sink ship 4">🚢</button>
+    <button class="ship" aria-label="Sink ship 5">⛵</button>
+  </div>
+
+  <div id="letterSection" hidden>
+    <div class="letter">
+      <h2>Happy Birthday, My Captain! 🏴‍☠️❤️</h2>
+
+      <p><strong>My Captain, my Zoro, my All Blue. ⚔️🌊</strong></p>
+
+      <p>
+        If I’m Robin, you’re my Zoro — the one whose loyalty speaks
+        louder than a thousand words, who makes me feel safe without
+        even trying.
+      </p>
+
+      <p>
+        If I’m Nami, you’re my Sanji — the one who spoils me with love,
+        makes me feel like a queen, and somehow always finds a way to
+        make me smile. 🍊💛
+      </p>
+
+      <p>
+        You’re my Luffy when I need someone to believe in me, my Zoro
+        when I need strength, my Sanji when I need tenderness, my Usopp
+        when I need laughter, my Chopper when I need comfort, my Brook
+        when I need a reason to smile, my Jinbe when I need peace, my
+        Franky when I need someone to make life exciting, and my Robin
+        when I need someone who understands the quiet parts of me.
+      </p>
+
+      <p>
+        And somewhere between all these characters, you became
+        something even more precious than the One Piece itself.
+      </p>
+
+      <p><strong>You became my ALL BLUE. 🌊💙</strong></p>
+
+      <p>
+        Even though we’re sailing across different seas, no distance
+        could ever break the bond we share. Just like the Straw Hat
+        crew, our relationship is built on loyalty, laughter,
+        unforgettable memories, and choosing each other through every
+        storm.
+      </p>
+
+      <p>
+        May this new journey around the sun bring you endless happiness,
+        the courage to chase your wildest dreams, and adventures more
+        incredible than anything on the Grand Line. May you always have
+        a reason to smile, a dream worth chasing, and people who will
+        stand beside you when the seas get rough.
+      </p>
+
+      <p>
+        And if life ever turns into a Marine chase, remember — I’ll
+        always be cheering for my Captain. If you ever lose your way
+        like Zoro, I’ll find you. If you ever feel like giving up,
+        I’ll remind you to dream bigger, just like Luffy.
+      </p>
+
+      <p>
+        I don’t need to find the One Piece when I’ve already found
+        someone who makes my world feel like an adventure worth living.
+      </p>
+
+      <p>
+        So today, my Captain, I wish you a lifetime of freedom,
+        happiness, love, and dreams coming true.
+      </p>
+
+      <p>
+        <strong>
+          Happy Birthday to my Love, my favourite adventure, and my
+          very own All Blue. ❤️🏴‍☠️
+        </strong>
+      </p>
+
+      <p class="signature">
+        <em>
+          No matter how far the sea takes us, you’ll always have a
+          place in my heart and a nakama by your side. ❤️
+        </em>
+      </p>
+
+      <p class="signature">
+        <em>
+          Forever yours, from your Boa Hancock to her Luffy. 💘👑
+          Even if my Luffy is too busy chasing the One Piece to notice
+          how deeply he is loved, my heart will keep choosing him.
+          Happy Birthday, my love, my Captain, my Luffy. ❤️🏴‍☠️
+        </em>
+      </p>
+    </div>
+
+    <button class="btn" onclick="showScreen(4)">
+      Claim the Devil Fruit! 🍇
+    </button>
+  </div>
+</section>
+
+<!-- SCREEN 4: DEVIL FRUIT -->
+<section class="screen" id="screen4">
+  <div class="tag">THE ULTIMATE TREASURE</div>
+  <h1 id="fruitTitle">The Legendary Birthday Fruit!</h1>
+  <p id="fruitHint">Tap the magical fruit to awaken its power!</p>
+
+  <div class="fruit-area">
+    <div class="candle" id="candle">✨</div>
+    <div class="stem"></div>
+    <div class="fruit" id="fruit" role="button" tabindex="0" aria-label="Awaken the birthday fruit">
+      <div class="swirl"></div>
+    </div>
+  </div>
+
+  <button class="btn" id="sliceBtn" hidden onclick="finishBirthday()">
+    Make a Captain's Wish! 👑
+  </button>
+
+  <div id="finale" hidden>
+    <h2 class="final-message">HAPPY BIRTHDAY! 🎉</h2>
+    <p>The whole crew is cheering for you, Nakama!</p>
+    <div class="hero">🎂🏴‍☠️🎁</div>
+    <p>
+      May your dreams be as big as the ocean and your happiness
+      as endless as the Grand Line. Keep smiling, keep dreaming,
+      and never stop being amazing!
+    </p>
+    <h2>I am your Hancock! ❤️</h2>
+    <button class="btn" onclick="restart()">Sail Again ↻</button>
+  </div>
+</section>
+
+<footer>
+  MADE WITH ❤️ FOR A LEGENDARY NAKAMA • GOMU GOMU NO BIRTHDAY!
+</footer>
+
+<script>
+let defeated = 0;
+let fruitAwakened = false;
+
+function showScreen(number) {
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.remove('active');
+  });
+
+  document.getElementById('screen' + number).classList.add('active');
+
+  document.querySelectorAll('#progress span').forEach((step, index) => {
+    step.classList.toggle('done', index < number);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.ship').forEach(ship => {
+  ship.addEventListener('click', () => {
+    if (ship.classList.contains('sunk')) return;
+
+    ship.classList.add('sunk');
+    defeated++;
+
+    document.getElementById('bounty').textContent =
+      `Ships defeated: ${defeated} / 5`;
+
+    if (defeated === 5) {
+      document.getElementById('battleHint').textContent =
+        'VICTORY! The enemy fleet has been defeated! 🏆';
+
+      document.getElementById('shipGrid').hidden = true;
+      document.getElementById('letterSection').hidden = false;
+
+      confettiBurst(35);
+    }
+  });
+});
+
+function awakenFruit() {
+  if (fruitAwakened) return;
+  fruitAwakened = true;
+
+  document.getElementById('fruit').style.animation = 'none';
+  document.getElementById('fruit').style.boxShadow =
+    '0 0 70px #ffb7ff, inset -18px -18px 25px #21063788';
+
+  document.getElementById('candle').classList.add('show');
+  document.getElementById('fruitTitle').textContent =
+    'Make a Captain’s Wish! 👑';
+
+  document.getElementById('fruitHint').textContent =
+    'The birthday power is yours! Close your eyes, make a wish, and prepare to celebrate!';
+
+  document.getElementById('sliceBtn').hidden = false;
+  confettiBurst(20);
+}
+
+document.getElementById('fruit').addEventListener('click', awakenFruit);
+
+document.getElementById('fruit').addEventListener('keydown', event => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    awakenFruit();
+  }
+});
+
+function finishBirthday() {
+  document.getElementById('fruitTitle').hidden = true;
+  document.getElementById('fruitHint').hidden = true;
+  document.querySelector('.fruit-area').hidden = true;
+  document.getElementById('sliceBtn').hidden = true;
+  document.getElementById('finale').hidden = false;
+
+  confettiBurst(100);
+}
+
+function confettiBurst(amount) {
+  const symbols = ['🎉', '✨', '⭐', '💛', '🍖', '🎊'];
+
+  for (let i = 0; i < amount; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti';
+    piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+    piece.style.fontSize = (14 + Math.random() * 20) + 'px';
+
+    document.body.appendChild(piece);
+    piece.addEventListener('animationend', () => piece.remove());
+  }
+}
+
+function restart() {
+  defeated = 0;
+  fruitAwakened = false;
+
+  document.querySelectorAll('.ship').forEach(ship => {
+    ship.classList.remove('sunk');
+  });
+
+  document.getElementById('bounty').textContent = 'Ships defeated: 0 / 5';
+  document.getElementById('battleHint').textContent =
+    'Tap all five ships to defeat the enemy fleet and unlock your secret birthday letter!';
+
+  document.getElementById('shipGrid').hidden = false;
+  document.getElementById('letterSection').hidden = true;
+
+  document.getElementById('fruitTitle').hidden = false;
+  document.getElementById('fruitHint').hidden = false;
+  document.querySelector('.fruit-area').hidden = false;
+  document.getElementById('sliceBtn').hidden = true;
+  document.getElementById('finale').hidden = true;
+
+  document.getElementById('fruitTitle').textContent =
+    'The Legendary Birthday Fruit!';
+  document.getElementById('fruitHint').textContent =
+    'Tap the magical fruit to awaken its power!';
+
+  document.getElementById('fruit').style.animation = '';
+  document.getElementById('fruit').style.boxShadow = '';
+  document.getElementById('candle').classList.remove('show');
+
+  showScreen(1);
+}
+</script>
+
+</body>
+</html>
